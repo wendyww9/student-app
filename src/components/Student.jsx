@@ -1,4 +1,5 @@
 import './StudentList.css';
+import PropTypes from "prop-types";
 
 const Student = (props) => {
     return (
@@ -9,4 +10,8 @@ const Student = (props) => {
     );
 };
 
+Student.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired
+};
 export default Student;
