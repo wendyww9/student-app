@@ -1,23 +1,9 @@
 import './StudentList.css';
 import Student from './Student.jsx'
 
-const StudentList = () => {
-  const studentData = [
-    {
-      nameData: 'Ada',
-      emailData: 'ada@dev.org'
-    },
-    {
-      nameData: 'Soo-ah',
-      emailData: 'sooah@dev.org'
-    },
-    {
-      nameData: 'Chrissy',
-      emailData: 'chrissy@dev.org'
-    }
-  ];
+const StudentList = (props) => {
 
-  const studentComponents = studentData.map(student => {
+  const studentComponents = props.students.map(student => {
     return (
       <li><Student name={student.nameData} email={student.emailData}></Student></li>
     );
