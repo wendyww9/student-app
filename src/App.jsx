@@ -26,10 +26,15 @@ function App() {
     });
   };
 
+  const deleteStudents = () => {
+    setStudentData([]);
+  };
+
   return (
     <main>
       <h1>Attendance</h1>
       <ClassInfo memberCount={studentData.length}></ClassInfo>
+      <button onClick={() => deleteStudents()}>Delete All Students!</button>
       <StudentList 
         students={studentData}
         onStudentPresenceToggle={toggleStudentPresence}
