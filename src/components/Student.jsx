@@ -3,24 +3,22 @@ import PropTypes from "prop-types";
 import { useState } from 'react';
 
 const Student = (props) => {
-  const [isPresent, setIsPresent] = useState(false);
-  const togglePresence = () => {
-    setIsPresent(isPresent => !isPresent);
-  };
   const nameColor = isPresent ? 'green' : 'red';
   return (
     <div>
-    <ul>
+      <ul>
         <li className={nameColor}>Nickname: {props.name}</li>
         <li>Email: {props.email}</li>
-    </ul>
-    <button onClick={togglePresence}>Toggle if {props.name} is present</button>
+      </ul>
+      <button onClick={/*togglePresence*/}>Toggle if {props.name} is present</button>
     </div>
   );
 };
 
 Student.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired
+  email: PropTypes.string.isRequired,
+  isPresent: PropTypes.bool.isRequired,
 };
 export default Student;

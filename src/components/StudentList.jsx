@@ -1,11 +1,19 @@
 import './StudentList.css';
-import Student from './Student.jsx'
+import Student from './Student.jsx';
+import PropTypes from 'prop-types';
 
 const StudentList = (props) => {
 
-  const studentComponents = props.students.map(student => {
+  const studentComponents = props.students.map((student,) => {
     return (
-      <li><Student name={student.nameData} email={student.emailData}></Student></li>
+      <li key={student.id}>
+        <Student 
+          id={student.id}
+          name={student.nameData} 
+          email={student.emailData}
+          isPresent={student.isPresentData}
+        ></Student>
+      </li>
     );
   });
 
@@ -17,6 +25,15 @@ const StudentList = (props) => {
       </ul>
     </section>
   );
+};
+
+StudentList.propTypes = {
+  students: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    nameData: PropTypes.string.isRequired,
+    emailData: PropTypes.string.isRequired,
+    isPresentData: PropTypes.bool.isRequired,
+  }))
 };
 
 export default StudentList;
