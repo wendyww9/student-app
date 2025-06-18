@@ -2,6 +2,7 @@ import StudentList from './components/StudentList';
 import ClassInfo from './components/ClassInfo';
 import { useState } from 'react';
 import { kInitialStudentData } from './data/studentData';
+import NewStudentForm from './components/NewStudentForm';
 
 function App() {
   const [studentData, setStudentData] = useState(kInitialStudentData);
@@ -29,6 +30,17 @@ function App() {
   const deleteStudents = () => {
     setStudentData([]);
   };
+  const addStudentData = (newStudent) => {
+    const newId = Math.max(0, ...studentData.map(s => s.id)) + 1;
+    const newStudentList = [...studentData];
+    newStudentList.push({
+      id: newId,
+      nameData: newStudent.nameData,
+      emailData: newStudent.emailData,
+      isPresentData: false,
+    });
+    setStudentData(newStudentList);
+  };
 
   return (
     <main>
@@ -39,6 +51,7 @@ function App() {
         students={studentData}
         onStudentPresenceToggle={toggleStudentPresence}
       ></StudentList>
+      <NewStudentForm onStudentAdd={addStudentData}></NewStudentForm>
     </main>
   );
 }
